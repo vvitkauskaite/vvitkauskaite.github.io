@@ -30,14 +30,8 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -80,8 +74,8 @@
       <img src="assets/img/hero-bg.jpg" alt="Foninis paveikslėlis" data-aos="fade-in" class="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Vaiva Vitkauskaitė</h2>
-        <p>Aš esu <span class="typed" data-typed-items="studentė, būsima inžinierė, ateities IT specialistė, ateities kūrėja">studentė</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+        <h1>Vaiva Vitkauskaitė</h1>
+        <h4>Aš esu <span class="typed" data-typed-items="studentė, būsima inžinierė, ateities IT specialistė, ateities kūrėja">studentė</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></h4>
       </div>
 
     </section><!-- /Hero Section -->
@@ -124,7 +118,9 @@
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Amžius:</strong> <span>20</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Studijos:</strong> <span>Bakalauras</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>El. paštas:</strong> <span>email@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>El. paštas:</strong> 
+                     <a href="mailto:example@gmail.com">example@gmail.com</a>
+                  </li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Praktikos galimybės:</strong> <span>Atvira pasiūlymams</span></li>
                 </ul>
               </div>
@@ -240,7 +236,9 @@
               <ul>
                 <li>Vilnius, Lietuva</li>
                 <li>+370 00000000</li>
-                <li>example@gmail.com</li>
+                <li>example@gmail.com
+                    <a href="mailto:example@gmail.com"></a>
+                </li>
               </ul>
             </div><!-- Edn Resume Item -->
 
@@ -270,11 +268,18 @@
               <h4>Akademiniai projektai ir laboratoriniai darbai</h4>
               <h5>2024 - dabar</h5>
               <p><em>VILNIUS TECH, studijos</em></p>
-              <ul>
-                <li>Atlieku Matlab laboratorinius darbus, kuriuose analizuojami signalai ir kuriami įvairūs grafikai.</li>
-                <li>Dirbu su mikrovaldikliais ir programavimo eksperimentais, susijusiais su įterptinėmis sistemomis.</li>
-                <li>Kuriu HTML/CSS pagrindu veikiančius tinklalapius ir CV puslapį.</li>
-              </ul>
+              <ol class="projects-list">
+                  <li>
+                    Atlieku Matlab laboratorinius darbus:
+                    <!-- Nested list (sąrašas sąraše) -->
+                    <ul>
+                      <li>Signalų analizė</li>
+                      <li>3D grafikai</li>
+                    </ul>
+                  </li>
+                  <li>Dirbu su mikrovaldikliais ir programavimo eksperimentais, susijusiais su įterptinėmis sistemomis.</li>
+                  <li>Kuriu HTML/CSS pagrindu veikiančius tinklalapius ir CV puslapį.</li>
+                </ol>
             </div><!-- Edn Resume Item -->
 
           </div>
@@ -400,10 +405,11 @@
 
           <div class="col-lg-4 col-md-6">
             <h3>Vaizdo įrašas</h3>
-            <video controls width="100%">
+            <video controls style="width: 100%;">
               <source src="assets/media/vaizdo-irasas.mp4" type="video/mp4">
               Jūsų naršyklė nepalaiko <code>video</code> žymės.
-            </video>
+              </video>
+
             <p class="mt-2">Pavyzdinis vaizdo įrašas.</p>
           </div>
 
@@ -431,6 +437,62 @@
           </div>
         </div>
       </div>
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6">
+            <h3>Vaizdo įrašas</h3>
+            ...
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <h3>YouTube vaizdo įrašas</h3>
+            ...
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <h3>Garso įrašas</h3>
+            ...
+          </div>
+
+        </div>
+      </div>
+
+            <div class="container mt-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="row">
+          <div class="col-12">
+            <table class="services-table">
+              <thead>
+                <tr>
+                  <th>Paslauga</th>
+                  <th>Aprašymas</th>
+                  <th>Kaina</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tinklalapių kūrimas</td>
+                  <td>Asmeninių ir paprastų portfolio svetainių dizainas ir realizacija.</td>
+                  <td>100 €</td>
+                </tr>
+                <tr>
+                  <td>CV dizaino maketavimas</td>
+                  <td>Modernus CV šablono sukūrimas pagal pateiktą informaciją.</td>
+                  <td>40 €</td>
+                </tr>
+                <tr>
+                  <td>Paprastų video montažas</td>
+                  <td>Trumpų vaizdo įrašų karpymas, subtitrai ir paprasti perėjimai.</td>
+                  <td>60 €</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </section><!-- /Services Section -->
 
 
@@ -469,7 +531,9 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3>Elektroninis paštas</h3>
-                  <p>info@example.com</p>
+                  <p>example@gmail.com
+                      <a href="mailto:example@gmail.com"></a>
+                  </p>
                 </div>
               </div><!-- End Info Item -->
 
