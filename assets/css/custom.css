@@ -131,9 +131,28 @@ a:active {
 .about .container > .row {
   background-color: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 14px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.about .container > .row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+}
+#about .container {
+  position: relative;
+  z-index: 2;
+}
+
+.about-shapes {
+  position: absolute;
+  inset: -100px; /* didesnė erdvė aplink */
+  pointer-events: none;
+  z-index: 1;
+}
+
+
 
 /* Reziumė – kiekvienas įrašas kaip kortelė */
 .resume .resume-item {
@@ -344,4 +363,261 @@ a:active {
 /* Hover efektas eilutei */
 .services-table tbody tr:hover {
   background-color: #ece9ff;
+}
+
+/* 🔹 Animacija #1 – profilio nuotrauka lėtai „plaukioja“ aukštyn-žemyn */
+@keyframes floatProfile {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.profile-img img {
+  animation: floatProfile 3s ease-in-out infinite;
+}
+
+/* 🔹 Animacija #2 — Pulsuojantis hero vardas */
+@keyframes pulseName {
+  0% {
+    transform: scale(1);
+    color: #ffffff;
+  }
+  50% {
+    transform: scale(1.15);
+    color: #571185;
+  }
+  100% {
+    transform: scale(1);
+    color: #eaddf1;
+  }
+}
+
+.hero .container h1 {
+  animation: pulseName 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+
+/* 🔹 Puslapio krovimo animacija (preloader) – besisukantis apskritimas */
+
+#preloader {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 vienu kartu */
+  background: rgba(10, 10, 30, 0.9); /* tamsus fonas */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pats “spinneris” – apskritimas viduryje */
+#preloader::after {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 6px solid #ece9ff;
+  border-top-color: #d54e9c; /* spalvotas segmentas */
+  animation: preloader-spin 1s linear infinite;
+}
+
+/* Sukimosi animacija */
+@keyframes preloader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* ♿ Vartotojams su judesio jautrumu – išjungiam animacijas */
+@media (prefers-reduced-motion: reduce) {
+
+  /* Hero vardas – nebesikeičia spalva ir dydis */
+  .hero h2,
+  .hero .container h2 {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Jeigu animacija buvo ant typed teksto – irgi stabdom */
+  .hero .typed {
+    animation: none !important;
+  }
+
+  /* Profilio nuotrauka – nebešokinėja */
+  .profile-img img {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Preloader – nebesisuka, tik rodom statinį ratuką */
+  #preloader::after {
+    animation: none !important;
+  }
+
+  /* Saugumo sumetimais – visų elementų animacijos supaprastinamos */
+  * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+}
+
+
+/* === Paslaugų sekcijos animuotas gradientinis fonas === */
+
+.services.section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #6fd3c7, #ffb3c6, #4e72d5, #4a3c8f);
+  background-size: 300% 300%;
+  animation: services-gradient 12s ease-in-out infinite;
+}
+
+/* Kortelės ant gradiento – kad išliktų įskaitomos */
+.services .service-item {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Gradiento animacija – lėtas „bėgimas“ per spalvas */
+@keyframes services-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Vartotojams su sumažintu judesiu – išjungiame animaciją */
+@media (prefers-reduced-motion: reduce) {
+  .services.section {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
+
+
+/* === APPE SEKCJOS DEKORATYVINĖS FIGŪROS === */
+
+.about {
+  position: relative;
+  overflow: hidden; /* kad figūros neišliptų už sekcijos ribų */
+}
+
+.about-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Bendra figūrų bazė */
+.about-shapes .shape {
+  position: absolute;
+  opacity: 0.4;
+}
+
+/* Apskritimas */
+/* Apskritimas – didesnis ir labiau matomas */
+.about-shapes .circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffb3c6, #d54e9c);
+  top: 5%;
+  left: -20px;
+  opacity: 0.5;
+  animation: float-up 8s ease-in-out infinite;
+}
+
+/* Kvadratas / rombas – didesnis apačioje dešinėje */
+.about-shapes .square {
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, #4a3c8f, #6fd3c7);
+  bottom: -20px;
+  right: -10px;
+  transform: rotate(20deg);
+  opacity: 0.5;
+  animation: rotate-slow 14s linear infinite;
+}
+
+/* Trikampis – didelis ir pulsuoja (scale) */
+.about-shapes .triangle {
+  width: 0px;
+  height: 0px;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-bottom: 190px solid rgba(255, 0, 0, 0.85);
+  bottom: -40px;
+  left: -20px;
+  opacity: 0.8;
+  transform-origin: center center;
+  animation: triangle-scale 6s ease-in-out infinite;
+}
+
+/* Užtikrinam, kad tikras turinys būtų virš figūrų */
+#about .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* === ANIMACIJOS === */
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-35px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate-slow {
+  0% {
+    transform: rotate(20deg) scale(1);
+  }
+  50% {
+    transform: rotate(200deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(380deg) scale(1);
+  }
+}
+
+/* Nauja – trikampis pulsuoja (didėja / mažėja) */
+@keyframes triangle-scale {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+
+/* Vartotojams su sumažintu judesiu – supaprastinam / išjungiam animacijas */
+@media (prefers-reduced-motion: reduce) {
+  .about-shapes .shape {
+    animation: none;
+  }
 }
