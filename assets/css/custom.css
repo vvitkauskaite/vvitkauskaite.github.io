@@ -1,4 +1,4 @@
-/* Bendras svetainės šriftas */
+/* Bendras svetainės šristas */
 body {
   font-family: "Dancing Script", "Poppins", sans-serif;
 }
@@ -620,4 +620,92 @@ a:active {
   .about-shapes .shape {
     animation: none;
   }
+}
+
+
+
+.game-board {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+}
+
+.game-board-easy {
+  grid-template-columns: repeat(4, minmax(70px, 1fr));
+}
+
+.game-board-hard {
+  grid-template-columns: repeat(6, minmax(70px, 1fr));
+}
+
+.game-card {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.game-card img {
+  width: 100%;
+  display: block;
+}
+
+
+.game-board {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+}
+
+.game-board-easy {
+  grid-template-columns: repeat(4, minmax(70px, 1fr));
+}
+
+.game-board-hard {
+  grid-template-columns: repeat(6, minmax(70px, 1fr));
+}
+
+.game-card {
+  width: 100%;
+  aspect-ratio: 3 / 2; /* kad būtų vienodas aukštis */
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.game-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.4s;
+}
+
+.game-card-front,
+.game-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* priekinė pusė – "užversta" */
+.game-card-front {
+  background: #e0e4ff;
+}
+
+/* galinė pusė – vėliava */
+.game-card-back {
+  transform: rotateY(180deg);
+  background: #ffffff;
+}
+
+.game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* kai kortelė atversta */
+.game-card.flipped .game-card-inner {
+  transform: rotateY(180deg);
 }
